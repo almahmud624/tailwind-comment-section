@@ -1,3 +1,3 @@
 # Tailwind Comments Section
 
-![alt text](image.png)
+![alt text](snap.png)
