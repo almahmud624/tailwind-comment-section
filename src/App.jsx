@@ -6,7 +6,7 @@ import { commentReplyInfo, commentsInfo } from "./data/demoCommentsData";
 function App() {
   return (
     <>
-      <div className="py-10 grid place-items-center">
+      <div className="py-10 px-5 grid place-items-center">
         <CommentsSection />
       </div>
     </>
@@ -16,12 +16,12 @@ function App() {
 const CommentsSection = () => {
   return (
     <>
-      <div className="space-y-4 w-1/2">
+      <div className="space-y-4 md:w-1/2">
         {commentsInfo?.map((comment) => (
           <div key={comment?.username} className="space-y-4">
             <CommentCard comment={comment} />
             {comment?.repliesCount > 0 && (
-              <div className="ml-8 flex h-full gap-x-10">
+              <div className="ml-5 md:ml-8 flex h-full gap-x-5 md:gap-x-10">
                 <div className="border-l-2 border-muted/10" />
                 <div className="space-y-4">
                   {commentReplyInfo?.map((comment) => (
@@ -47,7 +47,7 @@ const CommentInputArea = () => {
   return (
     <>
       <div className="p-5 w-full bg-white rounded-md flex gap-x-3 items-start">
-        <Avatar />
+        <Avatar userThumbnail="https://avatar.iran.liara.run/public/24" />
         <textarea
           rows="3"
           placeholder="Add a comment..."

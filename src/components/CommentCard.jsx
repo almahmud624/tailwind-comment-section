@@ -28,34 +28,21 @@ export default function CommentCard(props) {
             />
             <span className="text-muted text-sm">{commentdAt}</span>
           </div>
-          <div className="flex items-center gap-x-5">
-            {hasOwnComment ? (
-              <>
-                <IconButton
-                  icon={<MdDelete />}
-                  className={"text-red-600 hover:text-red-600/80"}
-                >
-                  <span>Delete</span>
-                </IconButton>
-                <IconButton icon={<MdEdit />}>
-                  <span>Reply</span>
-                </IconButton>
-              </>
-            ) : (
-              <IconButton icon={<FaReply className="text-xs" />}>
-                <span>Reply</span>
-              </IconButton>
-            )}
+          <div className="md:block hidden">
+            <CommentActionButtons hasOwnComment={hasOwnComment} />
           </div>
         </div>
         <p className="text-muted text-sm">
           {(reply || hasOwnComment) && (
-            <span className="text-primary font-semibold mr-1">
+            <span className="text-primary font-semibold mr-1 cursor-pointer hover:text-primary/80">
               @{commentOwnerUsername}
             </span>
           )}
           {commentText}
         </p>
+        <div className="md:hidden block">
+          <CommentActionButtons hasOwnComment={hasOwnComment} />
+        </div>
       </div>
     </div>
   );
@@ -71,6 +58,32 @@ const UserInfo = ({ hasOwnComment, username, userThumbnail }) => {
           <span className="text-[10px] bg-primary text-white px-1.5 rounded-sm">
             you
           </span>
+        )}
+      </div>
+    </>
+  );
+};
+
+const CommentActionButtons = ({ hasOwnComment }) => {
+  return (
+    <>
+      <div className="flex items-center gap-x-5">
+        {hasOwnComment ? (
+          <>
+            <IconButton
+              icon={<MdDelete />}
+              className={"text-red-600 hover:text-red-600/80"}
+            >
+              <span>Delete</span>
+            </IconButton>
+            <IconButton icon={<MdEdit />}>
+              <span>Reply</span>
+            </IconButton>
+          </>
+        ) : (
+          <IconButton icon={<FaReply className="text-xs" />}>
+            <span>Reply</span>
+          </IconButton>
         )}
       </div>
     </>
